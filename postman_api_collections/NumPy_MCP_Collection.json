@@ -1,0 +1,485 @@
+{
+  "info": {
+    "name": "NumPy MCP Server API",
+    "description": "Complete mathematical operations using NumPy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8010",
+      "description": "Base URL for NumPy MCP Server"
+    },
+    {
+      "key": "api_key",
+      "value": "test123",
+      "description": "API key for authentication"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Basic Matrix Operations",
+      "item": [
+        {
+          "name": "Matrix Addition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix_a\": [[1, 2], [3, 4]],\n  \"matrix_b\": [[5, 6], [7, 8]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/add?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "add"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Matrix Subtraction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix_a\": [[10, 12], [14, 16]],\n  \"matrix_b\": [[1, 2], [3, 4]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/subtract?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "subtract"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Matrix Multiplication",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix_a\": [[1, 2], [3, 4]],\n  \"matrix_b\": [[2, 0], [1, 2]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/multiply?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "multiply"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Element-wise Multiplication",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix_a\": [[1, 2], [3, 4]],\n  \"matrix_b\": [[2, 3], [4, 5]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/element_multiply?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "element_multiply"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Dot Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix_a\": [[1, 2, 3]],\n  \"matrix_b\": [[4], [5], [6]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/dot?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "dot"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Linear Algebra",
+      "item": [
+        {
+          "name": "Matrix Transpose",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[1, 2, 3], [4, 5, 6]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/transpose?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "transpose"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Matrix Inverse",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[4, 7], [2, 6]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/inverse?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "inverse"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Matrix Determinant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[1, 2], [3, 4]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/determinant?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "determinant"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Solve Linear System",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix_a\": [[3, 2], [1, 2]],\n  \"vector_b\": [7, 4]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/linear/solve?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "linear", "solve"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eigenvalues & Eigenvectors",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[4, 2], [1, 3]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/eigen?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "eigen"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Advanced Operations",
+      "item": [
+        {
+          "name": "Fast Fourier Transform",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vector\": [1, 2, 3, 4]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/signal/fft?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "signal", "fft"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Matrix Reshape",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[1, 2, 3, 4, 5, 6]],\n  \"new_shape\": [2, 3]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/reshape?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "reshape"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Matrix Norm",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[3, 4]],\n  \"ord\": \"fro\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/matrix/norm?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "matrix", "norm"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Polynomial Roots",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"coefficients\": [1, -5, 6]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/polynomial/roots?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "polynomial", "roots"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Statistical Operations",
+      "item": [
+        {
+          "name": "Calculate Mean",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[1, 2, 3], [4, 5, 6]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/stats/mean?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "stats", "mean"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Calculate Standard Deviation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matrix\": [[1, 2, 3], [4, 5, 6]]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/stats/std?api_key={{api_key}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "stats", "std"],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{api_key}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
