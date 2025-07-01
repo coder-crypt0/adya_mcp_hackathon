@@ -33,7 +33,7 @@ class GeminiChatCompletionParams:
     is_stream: bool = False
     prompt: str = ''
     api_key: str = ''
-    chat_model: str = 'gemini-2.0-pro'
+    chat_model: str = 'gemini-1.5-pro'
     vision_model: str = 'gemini-pro-vision'
     speech_model: str = ''
     chat_history: List[ChatMessage] = field(default_factory=list)
@@ -82,7 +82,7 @@ async def gemini_processor(data: Dict[str, Any]) -> LlmResponseStruct:
             is_stream=data.get('is_stream', False),
             prompt=data.get('prompt', ''),
             api_key=data.get('api_key', ''),
-            chat_model=data.get('chat_model', 'gemini-2.0-pro'),
+            chat_model=data.get('chat_model', 'gemini-1.5-pro'),
             vision_model=data.get('vision_model', 'gemini-pro-vision'),
             speech_model=data.get('speech_model', ''),
             chat_history=[ChatMessage(**msg) if isinstance(msg, dict) else msg
