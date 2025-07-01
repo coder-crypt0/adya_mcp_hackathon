@@ -11,6 +11,10 @@ from asyncio import Lock
 from hypercorn.asyncio import serve
 from hypercorn.config import Config
 from contextlib import AsyncExitStack
+
+# Add current directory to Python path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from src.llm.azureopenai import azure_openai_processor
 from src.server_connection import initialize_all_mcp, MCPServers
 from src.client_and_server_validation import client_and_server_validation
