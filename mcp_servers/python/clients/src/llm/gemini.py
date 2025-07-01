@@ -43,6 +43,34 @@ class GeminiChatCompletionParams:
     forced_tool_calls: Optional[Any] = None
     tool_choice: str = 'auto'
 
+def process_schema_property(val: Dict[str, Any]) -> Dict[str, Any]:
+    """Recursively process schema properties for Gemini compatibility"""
+    if val.get("type") == "array":
+        items = val.get("items", {})
+        if isinstance(items, dict) and items.get("type") == "array":
+            # Nested array (matrix) - handle recursively
+            inner_items = items.get("items", {"type": "string"})
+            return {
+                "type": "array",
+                "items": {
+                    "type": "array", 
+                    "items": process_schema_property(inner_items) if isinstance(inner_items, dict) and "type" in inner_items else inner_items
+                },
+                "description": val.get("description", "")
+            }
+        else:
+            # Simple array
+            return {
+                "type": "array",
+                "items": process_schema_property(items) if isinstance(items, dict) and "type" in items else items,
+                "description": val.get("description", "")
+            }
+    else:
+        return {
+            "type": val.get("type", "string"),
+            "description": val.get("description", "")
+        }
+
 async def gemini_processor(data: Dict[str, Any]) -> LlmResponseStruct:
     """Gemini LLM Processor"""
     try:
@@ -114,19 +142,7 @@ async def gemini_processor(data: Dict[str, Any]) -> LlmResponseStruct:
 
                 processed_props = {}
                 for key, val in props.items():
-                    if val.get("type") == "array":
-                        processed_props[key] = {
-                            "type": "array",
-                            "items": {"type": val.get("items", {}).get("type", "string")},
-                            "default": val.get("default", []),
-                            "description": val.get("description", "")
-                        }
-                    else:
-                        processed_props[key] = {
-                            "type": val.get("type", "string"),
-                            "default": val.get("default", ""),
-                            "description": val.get("description", "")
-                        }
+                    processed_props[key] = process_schema_property(val)
 
                 function_declarations.append({
                     "name": func.get("name"),

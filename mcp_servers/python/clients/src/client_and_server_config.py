@@ -14,13 +14,11 @@ ServersConfig = [
 			"mcp-gsuite"
 		]
 	},
-	{
-		"server_name": "NUMPY_MCP",
-		"command": "uvicorn",
-		"args": [
-			"--app-dir", "../servers/NUMPY_MCP",
-			"mcp_numpy:app",
-			"--port", "8010"
-		]
-	}
+{
+"server_name": "NUMPY_MCP",
+"command": "python",
+"args": [
+"../servers/NUMPY_MCP/mcp_numpy.py"
+]
+}
 ]

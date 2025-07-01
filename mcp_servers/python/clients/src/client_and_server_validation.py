@@ -42,16 +42,19 @@ async def client_and_server_validation(payload: Dict[str, Any], streaming_callba
             resource = await MCPServers[server].list_tools()
             if resource:
                 for tool in resource.tools:
+                    input_schema = getattr(tool, "inputSchema", {
+                        "type": "object",
+                        "properties": {},
+                        "required": []
+                    })
+                    
+                    
                     tool_dict = {
                         "type": "function",
                         "function": {
                             "name": tool.name,
                             "description": getattr(tool, "description", f"Tool for {tool.name}"),
-                            "parameters": getattr(tool, "inputSchema", {
-                                "type": "object",
-                                "properties": {},
-                                "required": []
-                            })
+                            "parameters": input_schema
                         }
                     }
                     tools_arr.append(tool_dict)

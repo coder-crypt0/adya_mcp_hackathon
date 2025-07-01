@@ -13,6 +13,93 @@
 					"name": "Gemini",
 					"item": [
 						{
+							"name": "Non-Stream Api - NumPy MCP",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\": 20000,\r\n        \"input\": \"Calculate the eigenvalues and eigenvectors of the matrix [[4, 2], [1, 3]]. Also find the determinant and inverse of this matrix.\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful mathematical assistant that can perform complex calculations using NumPy\",\r\n        \"chat_model\": \"gemini-2.0-flash\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"I need help with matrix calculations\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+									"host": [
+										"{{dev-python-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mcp",
+										"process_message"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Non-Stream Api - NumPy Statistics",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\": 20000,\r\n        \"input\": \"I have a dataset [[1,2,3],[4,5,6],[7,8,9]]. Calculate the mean, standard deviation, and variance. Also find the polynomial roots for coefficients [1, -6, 11, -6].\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a data analysis expert using NumPy for statistical computations\",\r\n        \"chat_model\": \"gemini-2.0-flash\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+									"host": [
+										"{{dev-python-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mcp",
+										"process_message"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Non-Stream Api - NumPy Signal Processing",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\": 20000,\r\n        \"input\": \"I have a signal [1, 2, 3, 4, 5, 4, 3, 2, 1]. Calculate its FFT and also perform SVD decomposition on the matrix [[1,2],[3,4]].\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a signal processing expert using NumPy for advanced mathematical analysis\",\r\n        \"chat_model\": \"gemini-2.0-flash\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+									"host": [
+										"{{dev-python-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mcp",
+										"process_message"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Non-Stream Api",
 							"request": {
 								"method": "POST",
@@ -104,6 +191,35 @@
 				{
 					"name": "Azure OpenAi",
 					"item": [
+						{
+							"name": "Non-Stream Api - NumPy MCP",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"endpoint\": \"\",\r\n        \"deployment_id\": \"gpt-4o\",\r\n        \"api_version\": \"\",\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"Solve the linear system: 2x + 3y = 7, x + 4y = 6. Also calculate the SVD decomposition of the coefficient matrix.\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a mathematical computation assistant using NumPy for linear algebra\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+									"host": [
+										"{{dev-python-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mcp",
+										"process_message"
+									]
+								}
+							},
+							"response": []
+						},
 						{
 							"name": "Non-Stream Api",
 							"request": {
@@ -197,13 +313,42 @@
 					"name": "Openai",
 					"item": [
 						{
+							"name": "Non-Stream Api - NumPy MCP",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"I need to analyze this matrix: [[1,2,3],[4,5,6],[7,8,9]]. Calculate its eigenvalues, determinant, transpose, and statistical measures like mean and standard deviation. Also perform SVD decomposition.\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a comprehensive mathematical analysis expert using NumPy for all calculations\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+									"host": [
+										"{{dev-python-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"mcp",
+										"process_message"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Non-Stream Api",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n\r\n         \"G_DRIVE\": {\r\n            \"web\": {\r\n                \"client_id\":\"\",\r\n                \"client_secret\":\"\",\r\n                \"refresh_token\": \"\",\r\n                \"access_token\": \"\"\r\n            }\r\n        }\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"Hii\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
+									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"WORDPRESS\": {\r\n            \"siteUrl\": \"\",\r\n            \"username\": \"\",\r\n            \"password\": \"\"\r\n        }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"Hii\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
