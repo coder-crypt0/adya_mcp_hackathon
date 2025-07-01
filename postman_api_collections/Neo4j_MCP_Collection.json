@@ -1,0 +1,423 @@
+{
+  "info": {
+    "_postman_id": "neo4j-mcp-collection",
+    "name": "Neo4j MCP Examples",
+    "description": "Complete Neo4j MCP Server testing with realistic data population and queries",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Database Setup & Info",
+      "item": [
+        {
+          "name": "Get Database Info",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Get database information, list all indexes and constraints. Show me the current state of the database including node counts and relationship counts.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a Neo4j database administrator checking database status\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Clear Database (Optional)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Execute a Cypher query to delete all nodes and relationships from the database. Use MATCH (n) DETACH DELETE n to clear everything for a fresh start.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a database administrator performing database cleanup\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Data Population - E-Commerce",
+      "item": [
+        {
+          "name": "Populate E-Commerce Database",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 50000,\n        \"input\": \"Create a comprehensive e-commerce database with realistic data. Include:\\n\\n1. CUSTOMERS (50+): Create customers with names like John Smith, Sarah Johnson, Mike Davis, etc. Include realistic emails (john.smith@email.com), phone numbers, addresses (cities like San Francisco, New York, Chicago), age ranges 18-65, registration dates in 2023-2024.\\n\\n2. CATEGORIES (20+): Electronics (Smartphones, Laptops, Tablets), Clothing (Men, Women, Kids), Books (Fiction, Non-fiction, Technical), Home & Garden, Sports, etc.\\n\\n3. PRODUCTS (100+): \\n- Electronics: iPhone 15 Pro ($999), MacBook Air ($1299), Samsung Galaxy ($899), Dell XPS ($1499)\\n- Books: 'The Great Gatsby' ($12.99), 'Clean Code' ($45.99), 'Dune' ($16.99)\\n- Clothing: Nike Air Max ($120), Levi's Jeans ($79.99), Adidas Shirt ($35)\\n- Include product descriptions, stock quantities, ratings\\n\\n4. ORDERS (200+): Create realistic purchase histories with order dates, quantities, total amounts. Orders from 2023-2024.\\n\\n5. REVIEWS (300+): Product reviews with star ratings (1-5), review text like 'Great product, fast delivery!', 'Good value for money', helpful vote counts.\\n\\n6. RELATIONSHIPS:\\n- Customers PURCHASED orders\\n- Orders CONTAINS products\\n- Products BELONGS_TO categories\\n- Customers REVIEWED products\\n- Create category hierarchies\\n\\nMake it comprehensive and interconnected like a real e-commerce platform. Include constraints and indexes for performance.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an expert database architect creating a realistic e-commerce database with proper relationships and constraints\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Add More Customer Data",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Add more diverse customer data to our e-commerce database. Create 30 additional customers with realistic profiles:\\n\\n- Names: Emma Wilson, James Brown, Lisa Garcia, David Miller, Jennifer Taylor, Robert Anderson, etc.\\n- Demographics: Ages 20-70, various locations (Los Angeles, Miami, Seattle, Boston, Austin, Denver)\\n- Contact: Realistic emails and phone numbers\\n- Preferences: Some customers prefer Electronics, others Books, Fashion, etc.\\n- Purchase history: Create more orders and reviews for these customers\\n- Loyalty levels: Mark some as 'Premium', 'Gold', 'Silver' customers\\n\\nAlso add customer relationships like REFERRED_BY between customers and SIMILAR_INTERESTS based on purchase patterns.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are expanding the customer base with diverse, realistic customer profiles and relationships\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Basic Query Tests",
+      "item": [
+        {
+          "name": "Find All Customers",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Show me all customers in the database. Include their names, emails, cities, and registration dates. Limit to first 20 customers.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are querying customer data for business analysis\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Find Products by Category",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Find all products in the Electronics category. Show product names, prices, descriptions, and stock quantities. Sort by price descending.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a product manager analyzing inventory\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Customer Purchase History",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Show the complete purchase history for customers. Find customers who have made orders, show their order details including products purchased, quantities, prices, and order dates. Focus on the top 10 customers by total purchase amount.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are analyzing customer purchase patterns for business insights\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Advanced Analytics",
+      "item": [
+        {
+          "name": "Top Selling Products",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Analyze sales performance. Find the top 10 best-selling products by total quantity sold and total revenue generated. Include product names, categories, total units sold, total revenue, and average order value.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a data analyst creating sales performance reports\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Customer Segmentation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Perform customer segmentation analysis. Categorize customers into segments based on their purchase behavior: High Value (>$1000 total purchases), Medium Value ($500-$1000), Low Value (<$500). Show customer count and average order value for each segment. Also identify customers who haven't made any purchases yet.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a marketing analyst segmenting customers for targeted campaigns\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Product Recommendations",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create product recommendations using collaborative filtering. Find products that are frequently bought together. For customers who bought iPhones, what other products did they purchase? Also find similar customers based on purchase patterns who might like similar products.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are building a recommendation engine for product suggestions\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Review Analytics",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Analyze product reviews and ratings. Find products with the highest average ratings, products with the most reviews, and identify products that might need attention (low ratings or few reviews). Show average rating, total review count, and recent review trends for each category.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are analyzing customer feedback and product satisfaction metrics\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Graph Analytics",
+      "item": [
+        {
+          "name": "Customer Relationship Networks",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Analyze customer relationship networks. Find customers who referred other customers, customers with similar purchase interests, and identify potential influencers (customers who might influence others' buying decisions). Use graph algorithms to find connected customer communities.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a social network analyst studying customer relationships and influence patterns\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Shortest Path Analysis",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Find interesting shortest paths in our e-commerce graph. Discover paths from customers to products through their purchase history and reviews. Find the shortest connection between different product categories through customer purchase patterns. Show how products are connected through customer buying behavior.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are exploring graph connections and discovering hidden patterns in e-commerce data\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Centrality Analysis",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Perform centrality analysis on our e-commerce network. Find the most central/important nodes in our graph - which customers have the most connections (most orders, reviews), which products are most connected (appear in most orders, have most reviews), and which categories are most central to our business.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are analyzing network centrality to identify key players in the e-commerce ecosystem\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Performance Testing",
+      "item": [
+        {
+          "name": "Query Performance Analysis",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Test query performance by running EXPLAIN and PROFILE on a complex query. Find customers who bought products in multiple categories and left reviews with ratings above 4 stars. Analyze the execution plan and suggest optimizations.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a database performance specialist optimizing query execution\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Index Usage Analysis",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Analyze current indexes and their usage. List all existing indexes and constraints, then create additional indexes that would improve query performance for common operations like finding customers by email, products by name, and orders by date. Test query performance before and after index creation.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are optimizing database performance through strategic index management\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Business Intelligence",
+      "item": [
+        {
+          "name": "Sales Trends Dashboard",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a comprehensive sales dashboard analysis. Show monthly sales trends, category performance, customer acquisition metrics, average order values, repeat customer rates, and geographic sales distribution. Identify growth opportunities and potential concerns.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a business intelligence analyst creating executive dashboards\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "Inventory Management",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Analyze inventory management needs. Identify products with low stock levels, products that are selling faster than expected, slow-moving inventory, and optimal reorder points based on sales velocity. Suggest inventory optimization strategies.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an inventory management specialist optimizing stock levels\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

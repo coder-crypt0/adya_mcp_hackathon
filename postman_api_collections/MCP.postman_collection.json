@@ -1,436 +1,523 @@
 {
-	"info": {
-		"_postman_id": "638217d5-c664-445c-a953-7da2dcc41209",
-		"name": "MCP",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "45403895"
-	},
-	"item": [
-		{
-			"name": "MCP - Client APIs",
-			"item": [
-				{
-					"name": "Gemini",
-					"item": [
-						{
-							"name": "Non-Stream Api - NumPy MCP",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\": 20000,\r\n        \"input\": \"Calculate the eigenvalues and eigenvectors of the matrix [[4, 2], [1, 3]]. Also find the determinant and inverse of this matrix.\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful mathematical assistant that can perform complex calculations using NumPy\",\r\n        \"chat_model\": \"gemini-2.0-flash\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"I need help with matrix calculations\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api - NumPy Statistics",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\": 20000,\r\n        \"input\": \"I have a dataset [[1,2,3],[4,5,6],[7,8,9]]. Calculate the mean, standard deviation, and variance. Also find the polynomial roots for coefficients [1, -6, 11, -6].\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a data analysis expert using NumPy for statistical computations\",\r\n        \"chat_model\": \"gemini-2.0-flash\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api - NumPy Signal Processing",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\": 20000,\r\n        \"input\": \"I have a signal [1, 2, 3, 4, 5, 4, 3, 2, 1]. Calculate its FFT and also perform SVD decomposition on the matrix [[1,2],[3,4]].\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a signal processing expert using NumPy for advanced mathematical analysis\",\r\n        \"chat_model\": \"gemini-2.0-flash\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"WORDPRESS\": {\r\n            \"siteUrl\": \"\",\r\n            \"username\": \"\",\r\n            \"password\": \"\"\r\n        }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\":20000,\r\n        \"input\": \"use the credentials which user already provided ,on my G Drive, search for 'POA June 2025' google sheet and let me know whether available or not if available get the some data\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gemini-2.0-flash-lite\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-js-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-js-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api -python",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"MCP-GSUITE\": {\r\n            \"token\": \"\",\r\n            \"refresh_token\": \"\",\r\n            \"client_id\": \"\",\r\n            \"client_secret\": \"\"\r\n        }\r\n        // \"WORDPRESS\": {\r\n        //     \"siteUrl\": \"\",\r\n        //     \"username\": \"\",\r\n        //     \"password\": \"\"\r\n        // }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\": 20000,\r\n        \"input\": \"get the recent one email\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gemini-2.0-flash\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"MCP-GSUITE\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Stream API",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"WORDPRESS\": {\r\n            \"siteUrl\": \"\",\r\n            \"username\": \"\",\r\n            \"password\": \"\"\r\n        }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"max_token\":20000,\r\n        \"input\": \"get the recent published post\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gemini-2.0-flash-lite\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
-									"host": [
-										"{{dev-js-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message_stream"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Azure OpenAi",
-					"item": [
-						{
-							"name": "Non-Stream Api - NumPy MCP",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"endpoint\": \"\",\r\n        \"deployment_id\": \"gpt-4o\",\r\n        \"api_version\": \"\",\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"Solve the linear system: 2x + 3y = 7, x + 4y = 6. Also calculate the SVD decomposition of the coefficient matrix.\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a mathematical computation assistant using NumPy for linear algebra\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"WORDPRESS\": {\r\n            \"siteUrl\": \"\",\r\n            \"username\": \"\",\r\n            \"password\": \"\"\r\n        }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"endpoint\": \"\",\r\n        \"deployment_id\": \"gpt-4o\",\r\n        \"api_version\": \"\",\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"create a category 'Grocery'\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-js-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-js-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api -python",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"WORDPRESS\": {\r\n            \"siteUrl\": \"\",\r\n            \"username\": \"\",\r\n            \"password\": \"\"\r\n        }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"endpoint\": \"\",\r\n        \"deployment_id\": \"gpt-4o\",\r\n        \"api_version\": \"\",\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"get the recent once email\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\r\n    \"selected_servers\": [\r\n        \"MCP-GSUITE\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Stream API",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n\r\n         \"G_DRIVE\": {\r\n            \"web\": {\r\n                \"client_id\":\"\",\r\n                \"client_secret\":\"\",\r\n                \"refresh_token\": \"\",\r\n                \"access_token\": \"\"\r\n            }\r\n        }\r\n    },\r\n     \"client_details\": {\r\n        \"endpoint\": \"\",\r\n        \"deployment_id\": \"gpt-4o\",\r\n        \"api_version\": \"\",\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"get the recent once email\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
-									"host": [
-										"{{dev-js-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message_stream"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Openai",
-					"item": [
-						{
-							"name": "Non-Stream Api - NumPy MCP",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"NUMPY_MCP\": {}\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"I need to analyze this matrix: [[1,2,3],[4,5,6],[7,8,9]]. Calculate its eigenvalues, determinant, transpose, and statistical measures like mean and standard deviation. Also perform SVD decomposition.\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a comprehensive mathematical analysis expert using NumPy for all calculations\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": []\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\r\n    \"selected_servers\": [\r\n        \"NUMPY_MCP\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"WORDPRESS\": {\r\n            \"siteUrl\": \"\",\r\n            \"username\": \"\",\r\n            \"password\": \"\"\r\n        }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"Hii\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-js-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-js-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Non-Stream Api -python",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"MCP-GSUITE\": {\r\n            \"token\": \"\",\r\n            \"refresh_token\": \"\",\r\n            \"client_id\": \"\",\r\n            \"client_secret\": \"\"\r\n        }\r\n        // \"WORDPRESS\": {\r\n        //     \"siteUrl\": \"\",\r\n        //     \"username\": \"\",\r\n        //     \"password\": \"\"\r\n        // }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\":{\r\n        \"api_key\": \"XkSQ0wdBTaZkxlvEEbQBxOAlPK1LhNL_XrcVtgA\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"get the recent email\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\r\n    \"selected_servers\": [\r\n        \"MCP-GSUITE\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-									"host": [
-										"{{dev-python-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Stream API",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"selected_server_credentials\": {\r\n        \"WORDPRESS\": {\r\n            \"siteUrl\": \"\",\r\n            \"username\": \"\",\r\n            \"password\": \"\"\r\n        }\r\n        //  \"G_DRIVE\": {\r\n        //     \"web\": {\r\n        //         \"client_id\":\"\",\r\n        //         \"client_secret\":\"\",\r\n        //         \"refresh_token\": \"\",\r\n        //         \"access_token\": \"\"\r\n        //     }\r\n        // }\r\n    },\r\n    \"client_details\": {\r\n        \"api_key\": \"\",\r\n        \"temperature\": 0.1,\r\n        \"input\": \"Hii\",\r\n        \"input_type\": \"text\",\r\n        \"prompt\": \"you are a helpful assistant\",\r\n        \"chat_model\": \"gpt-4o\",\r\n        \"chat_history\": [\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"Hii\"\r\n            }\r\n        ]\r\n    },\r\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\r\n    \"selected_servers\": [\r\n        \"WORDPRESS\"\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
-									"host": [
-										"{{dev-js-host}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"mcp",
-										"process_message_stream"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "638217d5-c664-445c-a953-7da2dcc41209",
+    "name": "MCP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "45403895"
+  },
+  "item": [
+    {
+      "name": "MCP - Client APIs",
+      "item": [
+        {
+          "name": "Gemini",
+          "item": [
+            {
+              "name": "Non-Stream Api - NumPy MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NUMPY_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Calculate the eigenvalues and eigenvectors of the matrix [[4, 2], [1, 3]]. Also find the determinant and inverse of this matrix.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful mathematical assistant that can perform complex calculations using NumPy\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"I need help with matrix calculations\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NUMPY_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - NumPy Statistics",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NUMPY_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"I have a dataset [[1,2,3],[4,5,6],[7,8,9]]. Calculate the mean, standard deviation, and variance. Also find the polynomial roots for coefficients [1, -6, 11, -6].\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a data analysis expert using NumPy for statistical computations\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NUMPY_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - NumPy Signal Processing",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NUMPY_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"I have a signal [1, 2, 3, 4, 5, 4, 3, 2, 1]. Calculate its FFT and also perform SVD decomposition on the matrix [[1,2],[3,4]].\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a signal processing expert using NumPy for advanced mathematical analysis\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NUMPY_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - Neo4j MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a social network graph. First create nodes for Alice (age: 30), Bob (age: 25), and Charlie (age: 35) with Person labels. Then create friendship relationships between Alice-Bob and Bob-Charlie. Finally, find the shortest path between Alice and Charlie.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a graph database expert using Neo4j for social network analysis\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\":20000,\n        \"input\": \"use the credentials which user already provided ,on my G Drive, search for 'POA June 2025' google sheet and let me know whether available or not if available get the some data\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gemini-2.0-flash-lite\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api -python",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"MCP-GSUITE\": {\n            \"token\": \"\",\n            \"refresh_token\": \"\",\n            \"client_id\": \"\",\n            \"client_secret\": \"\"\n        }\n        // \"WORDPRESS\": {\n        //     \"siteUrl\": \"\",\n        //     \"username\": \"\",\n        //     \"password\": \"\"\n        // }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"get the recent one email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"MCP-GSUITE\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Stream API",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\":20000,\n        \"input\": \"get the recent published post\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gemini-2.0-flash-lite\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message_stream"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Azure OpenAi",
+          "item": [
+            {
+              "name": "Non-Stream Api - NumPy MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NUMPY_MCP\": {}\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Solve the linear system: 2x + 3y = 7, x + 4y = 6. Also calculate the SVD decomposition of the coefficient matrix.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a mathematical computation assistant using NumPy for linear algebra\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"NUMPY_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - Neo4j MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Build a knowledge graph about companies and their employees. Create Company nodes for Google and Microsoft, Person nodes for employees, and WORKS_FOR relationships. Then find all neighbors of Google to see its connections.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a knowledge graph specialist using Neo4j for enterprise data modeling\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"create a category 'Grocery'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api -python",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"get the recent once email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"MCP-GSUITE\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Stream API",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n\n         \"G_DRIVE\": {\n            \"web\": {\n                \"client_id\":\"\",\n                \"client_secret\":\"\",\n                \"refresh_token\": \"\",\n                \"access_token\": \"\"\n            }\n        }\n    },\n     \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"get the recent once email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message_stream"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Openai",
+          "item": [
+            {
+              "name": "Non-Stream Api - NumPy MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NUMPY_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"I need to analyze this matrix: [[1,2,3],[4,5,6],[7,8,9]]. Calculate its eigenvalues, determinant, transpose, and statistical measures like mean and standard deviation. Also perform SVD decomposition.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a comprehensive mathematical analysis expert using NumPy for all calculations\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"NUMPY_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - Neo4j MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Execute a custom Cypher query to find all nodes with more than 2 relationships, explain the query performance, and then profile it for optimization insights.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a Neo4j performance analyst using Cypher for complex graph queries\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Hii\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api -python",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"MCP-GSUITE\": {\n            \"token\": \"\",\n            \"refresh_token\": \"\",\n            \"client_id\": \"\",\n            \"client_secret\": \"\"\n        }\n        // \"WORDPRESS\": {\n        //     \"siteUrl\": \"\",\n        //     \"username\": \"\",\n        //     \"password\": \"\"\n        // }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\":{\n        \"api_key\": \"XkSQ0wdBTaZkxlvEEbQBxOAlPK1LhNL_XrcVtgA\",\n        \"temperature\": 0.1,\n        \"input\": \"get the recent email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"MCP-GSUITE\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Stream API",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Hii\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message_stream"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

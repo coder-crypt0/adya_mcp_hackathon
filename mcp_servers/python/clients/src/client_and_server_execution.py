@@ -124,7 +124,16 @@ async def client_and_server_execution(payload: Dict[str, Any], streaming_callbac
                     result.Data["final_llm_response"] = response.Data.get("final_llm_response")
                     result.Data["llm_responses_arr"].append(response.Data.get("final_llm_response"))
 
-                    if response.Data.get("output_type") == "text":
+                    # Check if the response contains function calls even if marked as text
+                    final_llm_response = response.Data.get("final_llm_response") if response.Data else None
+                    candidates = final_llm_response.get("candidates", []) if final_llm_response else []
+                    first_candidate = candidates[0] if candidates and len(candidates) > 0 else {}
+                    content = first_candidate.get("content", {}) if isinstance(first_candidate, dict) else {}
+                    parts = content.get("parts", []) if isinstance(content, dict) else []
+                    
+                    has_function_calls = any("functionCall" in part for part in parts if isinstance(part, dict))
+                    
+                    if response.Data.get("output_type") == "text" and not has_function_calls:
                         result.Data["messages"].extend(response.Data.get("messages", []))
                         result.Data["output_type"] = response.Data.get("output_type", "")
                         result.Error = response.Error
@@ -617,7 +626,16 @@ async def client_and_server_execution(payload: Dict[str, Any], streaming_callbac
                     result.Data["final_llm_response"] = response.Data.get("final_llm_response")
                     result.Data["llm_responses_arr"].append(response.Data.get("final_llm_response"))
 
-                    if response.Data.get("output_type") == "text":
+                    # Check if the response contains function calls even if marked as text
+                    final_llm_response = response.Data.get("final_llm_response") if response.Data else None
+                    candidates = final_llm_response.get("candidates", []) if final_llm_response else []
+                    first_candidate = candidates[0] if candidates and len(candidates) > 0 else {}
+                    content = first_candidate.get("content", {}) if isinstance(first_candidate, dict) else {}
+                    parts = content.get("parts", []) if isinstance(content, dict) else []
+                    
+                    has_function_calls = any(isinstance(part, dict) and "functionCall" in part for part in parts)
+
+                    if response.Data.get("output_type") == "text" and not has_function_calls:
                         result.Data["messages"].extend(response.Data.get("messages", []))
                         result.Data["output_type"] = response.Data.get("output_type", "")
                         result.Error = response.Error
@@ -643,16 +661,17 @@ async def client_and_server_execution(payload: Dict[str, Any], streaming_callbac
                             "Action": "NOTIFICATION"
                         }))
 
-                    final_llm_response = response.Data.get("final_llm_response") if response.Data else None
-                    candidates = final_llm_response.get("candidates", []) if final_llm_response else []
-                    first_candidate = candidates[0] if candidates and len(candidates) > 0 else {}
-                    content = first_candidate.get("content", {}) if isinstance(first_candidate, dict) else {}
-                    parts = content.get("parts", []) if isinstance(content, dict) else []
-
                     for tool in parts:
+                        # Only process if this part contains a function call
+                        if "functionCall" not in tool:
+                            continue
 
                         tool_name = tool.get("functionCall", {}).get("name")
                         args_raw = tool.get("functionCall", {}).get("args", {})
+                        
+                        # Skip if no tool name is found
+                        if not tool_name:
+                            continue
 
                         if isinstance(args_raw, str):
                             try:
@@ -804,9 +823,16 @@ async def client_and_server_execution(payload: Dict[str, Any], streaming_callbac
                         parts = content.get("parts", []) if isinstance(content, dict) else []
 
                         for tool in parts:
+                            # Only process if this part contains a function call
+                            if "functionCall" not in tool:
+                                continue
 
                             tool_name = tool.get("functionCall", {}).get("name")
                             args_raw = tool.get("functionCall", {}).get("args", {})
+                            
+                            # Skip if no tool name is found
+                            if not tool_name:
+                                continue
 
                             if isinstance(args_raw, str):
                                 try:
@@ -913,6 +939,9 @@ async def call_and_execute_tool(
             args["__credentials__"]   = creds
             args["server_credentials"] = creds
         case "FACEBOOK_ADS_MCP":
+            args["__credentials__"]   = creds
+            args["server_credentials"] = creds
+        case "NEO4J_MCP":
             args["__credentials__"]   = creds
             args["server_credentials"] = creds
         case _:
