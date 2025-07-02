@@ -61,7 +61,10 @@ def initialize_line_bot(credentials: dict):
             raise ValueError("Missing LINE credentials: channel_access_token and channel_secret required")
         
         line_bot_api = LineBotApi(channel_access_token)
-        handler = WebhookHandler(channel_secret)
+        # Only initialize webhook handler if channel_secret is provided
+        # Webhook handler is optional for one-way messaging
+        if channel_secret:
+            handler = WebhookHandler(channel_secret)
         
         logger.info("LINE Bot API initialized successfully")
         return True
@@ -527,6 +530,258 @@ class BroadcastMessageToolHandler(LineToolHandler):
         except Exception as e:
             return [TextContent(type="text", text=f"Error broadcasting message: {str(e)}")]
 
+# Webhook Event Handler Tool
+class WebhookEventHandlerToolHandler(LineToolHandler):
+    def __init__(self):
+        super().__init__("handle_webhook_event")
+
+    def get_tool_description(self) -> Tool:
+        return Tool(
+            name=self.name,
+            description="Handle incoming webhook events from LINE platform",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "webhook_data": {
+                        "type": "object",
+                        "description": "Raw webhook event data from LINE"
+                    },
+                    "signature": {
+                        "type": "string",
+                        "description": "X-Line-Signature header for verification"
+                    },
+                    "__credentials__": {
+                        "type": "object",
+                        "description": "LINE Bot credentials"
+                    }
+                },
+                "required": ["webhook_data"]
+            }
+        )
+
+    def run_tool(self, args: dict) -> Sequence[TextContent]:
+        try:
+            credentials = args.get("__credentials__", {})
+            if not initialize_line_bot(credentials):
+                return [TextContent(type="text", text="Error: Failed to initialize LINE Bot API")]
+
+            webhook_data = args["webhook_data"]
+            signature = args.get("signature", "")
+
+            # Process webhook events
+            events = webhook_data.get("events", [])
+            processed_events = []
+
+            for event in events:
+                event_type = event.get("type", "unknown")
+                
+                if event_type == "message":
+                    message_type = event.get("message", {}).get("type", "unknown")
+                    user_id = event.get("source", {}).get("userId", "unknown")
+                    message_text = event.get("message", {}).get("text", "")
+                    
+                    processed_events.append({
+                        "type": "message",
+                        "message_type": message_type,
+                        "user_id": user_id,
+                        "text": message_text,
+                        "timestamp": event.get("timestamp")
+                    })
+                
+                elif event_type == "follow":
+                    user_id = event.get("source", {}).get("userId", "unknown")
+                    processed_events.append({
+                        "type": "follow",
+                        "user_id": user_id,
+                        "timestamp": event.get("timestamp")
+                    })
+                
+                elif event_type == "unfollow":
+                    user_id = event.get("source", {}).get("userId", "unknown")
+                    processed_events.append({
+                        "type": "unfollow", 
+                        "user_id": user_id,
+                        "timestamp": event.get("timestamp")
+                    })
+
+            return [TextContent(type="text", text=f"Processed {len(processed_events)} webhook events: {json.dumps(processed_events, indent=2)}")]
+
+        except Exception as e:
+            return [TextContent(type="text", text=f"Error handling webhook event: {str(e)}")]
+
+# Rich Menu Management Tool
+class RichMenuToolHandler(LineToolHandler):
+    def __init__(self):
+        super().__init__("manage_rich_menu")
+
+    def get_tool_description(self) -> Tool:
+        return Tool(
+            name=self.name,
+            description="Create and manage LINE Rich Menus for enhanced user interaction",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "enum": ["create", "delete", "set_default", "link_to_user"],
+                        "description": "Rich menu action to perform"
+                    },
+                    "rich_menu_data": {
+                        "type": "object",
+                        "description": "Rich menu configuration data"
+                    },
+                    "rich_menu_id": {
+                        "type": "string",
+                        "description": "Rich menu ID for delete/set operations"
+                    },
+                    "user_id": {
+                        "type": "string", 
+                        "description": "User ID for linking rich menu"
+                    },
+                    "__credentials__": {
+                        "type": "object",
+                        "description": "LINE Bot credentials"
+                    }
+                },
+                "required": ["action"]
+            }
+        )
+
+    def run_tool(self, args: dict) -> Sequence[TextContent]:
+        try:
+            credentials = args.get("__credentials__", {})
+            if not initialize_line_bot(credentials):
+                return [TextContent(type="text", text="Error: Failed to initialize LINE Bot API")]
+
+            action = args["action"]
+
+            if action == "create":
+                rich_menu_data = args.get("rich_menu_data", {})
+                
+                # Create a basic rich menu structure
+                rich_menu = RichMenu(
+                    size=RichMenuSize(width=2500, height=1686),
+                    selected=False,
+                    name=rich_menu_data.get("name", "Default Rich Menu"),
+                    chat_bar_text=rich_menu_data.get("chat_bar_text", "Menu"),
+                    areas=[
+                        RichMenuArea(
+                            bounds=RichMenuBounds(x=0, y=0, width=1250, height=1686),
+                            action=MessageAction(text="Option 1")
+                        ),
+                        RichMenuArea(
+                            bounds=RichMenuBounds(x=1250, y=0, width=1250, height=1686),
+                            action=MessageAction(text="Option 2")
+                        )
+                    ]
+                )
+                
+                rich_menu_id = line_bot_api.create_rich_menu(rich_menu)
+                return [TextContent(type="text", text=f"Rich menu created with ID: {rich_menu_id}")]
+
+            elif action == "delete":
+                rich_menu_id = args.get("rich_menu_id")
+                if not rich_menu_id:
+                    return [TextContent(type="text", text="Error: rich_menu_id required for delete action")]
+                
+                line_bot_api.delete_rich_menu(rich_menu_id)
+                return [TextContent(type="text", text=f"Rich menu {rich_menu_id} deleted successfully")]
+
+            elif action == "set_default":
+                rich_menu_id = args.get("rich_menu_id")
+                if not rich_menu_id:
+                    return [TextContent(type="text", text="Error: rich_menu_id required for set_default action")]
+                
+                line_bot_api.set_default_rich_menu(rich_menu_id)
+                return [TextContent(type="text", text=f"Rich menu {rich_menu_id} set as default")]
+
+            elif action == "link_to_user":
+                rich_menu_id = args.get("rich_menu_id")
+                user_id = args.get("user_id")
+                if not rich_menu_id or not user_id:
+                    return [TextContent(type="text", text="Error: rich_menu_id and user_id required for link_to_user action")]
+                
+                line_bot_api.link_rich_menu_to_user(user_id, rich_menu_id)
+                return [TextContent(type="text", text=f"Rich menu {rich_menu_id} linked to user {user_id}")]
+
+            return [TextContent(type="text", text=f"Unknown rich menu action: {action}")]
+
+        except LineBotApiError as e:
+            return [TextContent(type="text", text=f"LINE API Error: {str(e)}")]
+        except Exception as e:
+            return [TextContent(type="text", text=f"Error managing rich menu: {str(e)}")]
+
+# Group Member Management Tool
+class GroupMemberToolHandler(LineToolHandler):
+    def __init__(self):
+        super().__init__("manage_group_members")
+
+    def get_tool_description(self) -> Tool:
+        return Tool(
+            name=self.name,
+            description="Manage LINE group members and get group member information",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "enum": ["get_member_profile", "get_member_ids", "leave_group"],
+                        "description": "Group member action to perform"
+                    },
+                    "group_id": {
+                        "type": "string",
+                        "description": "LINE Group ID"
+                    },
+                    "user_id": {
+                        "type": "string",
+                        "description": "User ID for getting member profile"
+                    },
+                    "__credentials__": {
+                        "type": "object",
+                        "description": "LINE Bot credentials"
+                    }
+                },
+                "required": ["action", "group_id"]
+            }
+        )
+
+    def run_tool(self, args: dict) -> Sequence[TextContent]:
+        try:
+            credentials = args.get("__credentials__", {})
+            if not initialize_line_bot(credentials):
+                return [TextContent(type="text", text="Error: Failed to initialize LINE Bot API")]
+
+            action = args["action"]
+            group_id = args["group_id"]
+
+            if action == "get_member_profile":
+                user_id = args.get("user_id")
+                if not user_id:
+                    return [TextContent(type="text", text="Error: user_id required for get_member_profile action")]
+                
+                profile = line_bot_api.get_group_member_profile(group_id, user_id)
+                profile_info = {
+                    "display_name": profile.display_name,
+                    "user_id": profile.user_id,
+                    "picture_url": profile.picture_url
+                }
+                return [TextContent(type="text", text=f"Group Member Profile: {json.dumps(profile_info, indent=2)}")]
+
+            elif action == "get_member_ids":
+                member_ids = line_bot_api.get_group_member_ids(group_id)
+                return [TextContent(type="text", text=f"Group Member IDs: {json.dumps(member_ids.member_ids, indent=2)}")]
+
+            elif action == "leave_group":
+                line_bot_api.leave_group(group_id)
+                return [TextContent(type="text", text=f"Successfully left group {group_id}")]
+
+            return [TextContent(type="text", text=f"Unknown group member action: {action}")]
+
+        except LineBotApiError as e:
+            return [TextContent(type="text", text=f"LINE API Error: {str(e)}")]
+        except Exception as e:
+            return [TextContent(type="text", text=f"Error managing group members: {str(e)}")]
+
 # Tool registry
 tool_handlers: Dict[str, LineToolHandler] = {}
 
@@ -547,6 +802,9 @@ add_tool_handler(GetUserProfileToolHandler())
 add_tool_handler(GetGroupSummaryToolHandler())
 add_tool_handler(SendFlexMessageToolHandler())
 add_tool_handler(BroadcastMessageToolHandler())
+add_tool_handler(WebhookEventHandlerToolHandler())
+add_tool_handler(RichMenuToolHandler())
+add_tool_handler(GroupMemberToolHandler())
 
 @app.list_tools()
 async def handle_list_tools() -> List[Tool]:
