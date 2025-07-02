@@ -5,32 +5,6 @@ ClientsConfig = [
 ]
 
 ServersConfig = [
-<<<<<<< HEAD
-{
-"server_name": "MCP-GSUITE",
-"command":"uv",
-"args": [
-"--directory",
-"mcp_servers/python/servers/MCP-GSUITE/mcp-gsuite",
-"run",
-"mcp-gsuite"
-]
-},
-{
-"server_name": "NUMPY_MCP",
-"command": "python",
-"args": [
-"mcp_servers/python/servers/NUMPY_MCP/mcp_numpy.py"
-]
-},
-{
-"server_name": "LINE_MCP",
-"command": "python",
-"args": [
-"mcp_servers/python/servers/LINE_MCP/line_mcp.py"
-]
-}
-=======
     {
         "server_name": "MCP-GSUITE",
         "command": "uv",
@@ -54,6 +28,12 @@ ServersConfig = [
         "args": [
             "mcp_servers/python/servers/NEO4J_MCP/mcp_neo4j.py"
         ]
+    },
+    {
+        "server_name": "LINE_MCP",
+        "command": "python",
+        "args": [
+            "mcp_servers/python/servers/LINE_MCP/line_mcp.py"
+        ]
     }
->>>>>>> 1b82b2f4dbc0bb702b171ed16daa9a3542d2277a
 ]
