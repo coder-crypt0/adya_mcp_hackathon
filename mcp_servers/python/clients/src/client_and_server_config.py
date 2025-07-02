@@ -20,5 +20,12 @@ ServersConfig = [
 "args": [
 "mcp_servers/python/servers/NUMPY_MCP/mcp_numpy.py"
 ]
+},
+{
+"server_name": "LINE_MCP",
+"command": "python",
+"args": [
+"mcp_servers/python/servers/LINE_MCP/line_mcp.py"
+]
 }
 ]
