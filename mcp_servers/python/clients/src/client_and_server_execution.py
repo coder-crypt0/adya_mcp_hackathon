@@ -935,6 +935,9 @@ async def call_and_execute_tool(
         case "MCP-GSUITE":
             args["__credentials__"]   = creds
             args["server_credentials"] = creds
+        case "LINE_MCP":
+            args["__credentials__"]   = creds
+            args["server_credentials"] = creds
         case "FACEBOOK_MCP":
             args["__credentials__"]   = creds
             args["server_credentials"] = creds

@@ -5,6 +5,9 @@ import sys
 import os
 import logging
 import time
+import hmac
+import hashlib
+import base64
 from typing import Optional, Dict, Any
 import pandas as pd
 from asyncio import Lock
@@ -278,6 +281,129 @@ async def process_message_stream():
         )
 
 
+# LINE Webhook functionality
+def verify_line_signature(body: bytes, signature: str, channel_secret: str) -> bool:
+    """Verify LINE webhook signature"""
+    try:
+        hash_digest = hmac.new(
+            channel_secret.encode('utf-8'),
+            body,
+            hashlib.sha256
+        ).digest()
+        expected_signature = base64.b64encode(hash_digest).decode('utf-8')
+        return hmac.compare_digest(signature, expected_signature)
+    except Exception as e:
+        logger.error(f"Signature verification error: {e}")
+        return False
+
+@app.route("/line/webhook", methods=["POST"])
+async def line_webhook():
+    """Handle LINE webhook events"""
+    try:
+        # Get request body and headers
+        body = await request.get_data()
+        signature = request.headers.get('X-Line-Signature', '')
+        
+        # For demo purposes, we'll skip signature verification
+        # In production, you should verify the signature with your channel secret
+        # if not verify_line_signature(body, signature, YOUR_CHANNEL_SECRET):
+        #     return jsonify({"error": "Invalid signature"}), 403
+        
+        # Parse webhook event
+        try:
+            webhook_data = json.loads(body.decode('utf-8'))
+        except json.JSONDecodeError:
+            return jsonify({"error": "Invalid JSON"}), 400
+        
+        logger.info(f"📱 LINE Webhook received: {webhook_data}")
+        
+        # Process each event
+        events = webhook_data.get('events', [])
+        for event in events:
+            await process_line_event(event)
+        
+        return jsonify({"status": "success"}), 200
+        
+    except Exception as error:
+        logger.error(f"LINE Webhook Error: {error}")
+        return jsonify({"error": str(error)}), 500
+
+async def process_line_event(event: dict):
+    """Process individual LINE webhook events"""
+    try:
+        event_type = event.get('type')
+        source = event.get('source', {})
+        user_id = source.get('userId')
+        
+        logger.info(f"📱 Processing LINE event: {event_type} from user: {user_id}")
+        
+        if event_type == 'message':
+            message = event.get('message', {})
+            message_type = message.get('type')
+            
+            if message_type == 'text':
+                text = message.get('text', '')
+                logger.info(f"📱 Received text message: {text}")
+                
+                # Here you can process the message and respond using your MCP servers
+                # Example: Auto-respond with a helpful message
+                await send_line_response(user_id, f"Thanks for your message: '{text}'. I'm your MCP-powered assistant!")
+                
+        elif event_type == 'follow':
+            logger.info(f"📱 User {user_id} followed the bot")
+            await send_line_response(user_id, "🎉 Welcome! I'm your AI assistant powered by MCP servers. I can help with math calculations, email management, and more!")
+            
+        elif event_type == 'unfollow':
+            logger.info(f"📱 User {user_id} unfollowed the bot")
+            
+    except Exception as e:
+        logger.error(f"Error processing LINE event: {e}")
+
+async def send_line_response(user_id: str, message: str):
+    """Send a response back to LINE user using MCP"""
+    try:
+        # Create MCP request to send LINE message
+        mcp_request = {
+            "selected_server_credentials": {
+                "LINE_MCP": {
+                    "channel_access_token": "demo_mode",  # Will be replaced with actual credentials
+                    "channel_secret": "demo_mode",
+                    "webhook_url": "demo_mode"
+                }
+            },
+            "client_details": {
+                "api_key": "demo_mode",
+                "temperature": 0.1,
+                "max_token": 1000,
+                "input": f"Send a text message '{message}' to user {user_id}",
+                "input_type": "text",
+                "prompt": "you are a helpful LINE messaging assistant",
+                "chat_model": "gemini-2.0-flash",
+                "chat_history": []
+            },
+            "selected_client": "MCP_CLIENT_GEMINI",
+            "selected_servers": ["LINE_MCP"]
+        }
+        
+        logger.info(f"📱 Sending LINE response via MCP: {message[:50]}...")
+        
+        # Note: In production, you would process this through your MCP pipeline
+        # For now, we'll just log it
+        logger.info(f"📱 Would send via MCP: {message}")
+        
+    except Exception as e:
+        logger.error(f"Error sending LINE response: {e}")
+
+@app.route("/line/status", methods=["GET"])
+async def line_status():
+    """Get LINE webhook status"""
+    return jsonify({
+        "webhook_url": "Configure this with your ngrok URL + /line/webhook",
+        "status": "active",
+        "mcp_servers": list(MCPServers.keys()) if MCPServers else [],
+        "example_webhook_url": "https://your-ngrok-url.ngrok.io/line/webhook"
+    })
+
 @app.after_serving
 async def shutdown():
     if app.mcp_exit_stack:
@@ -298,7 +424,14 @@ if __name__ == "__main__":
     print("║                                                                                           ║")
     print("║  🎉 Welcome to the MCP(Model Context Protocol) Server Integration Hackathon 2k25 !! 🎉    ║")
     print("║                                                                                           ║")
-    print("║  ✅ Server running on http://0.0.0.0:5001 ✅                                              ║")
+    print("║  ✅ MCP Server running on http://0.0.0.0:5001 ✅                                          ║")
+    print("║  📱 LINE Webhook endpoint: /line/webhook                                                 ║")
+    print("║  🔗 Webhook status: http://localhost:5001/line/status                                     ║")
+    print("║                                                                                           ║")
+    print("║  💡 To get your webhook URL:                                                              ║")
+    print("║     1. Install ngrok: npm install -g ngrok                                               ║")
+    print("║     2. Run: ngrok http 5001                                                               ║")
+    print("║     3. Copy HTTPS URL + /line/webhook                                                     ║")
     print("║                                                                                           ║") 
     print("╚═══════════════════════════════════════════════════════════════════════════════════════════╝")
 
