@@ -58,11 +58,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Originate a call from extension {{test_extension_1}} to extension {{test_extension_2}} in the internal context. This is a test call to demonstrate call origination capabilities.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk telephony specialist managing call origination\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
               "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Originate a call from extension {{test_extension_1}} to extension {{test_extension_2}} in the internal context. This is a test call to demonstrate call origination capabilities.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk telephony specialist managing call origination\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
               "options": {
                 "raw": {
                   "language": "json"
@@ -83,11 +79,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Show me all currently active calls in the Asterisk system. Display caller information, destinations, call states, and durations for each active call.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call monitoring specialist tracking active calls\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Show me all currently active calls in the Asterisk system. Display caller information, destinations, call states, and durations for each active call.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call monitoring specialist tracking active calls\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Show me all currently active calls in the Asterisk system. Display caller information, destinations, call states, and durations for each active call.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call monitoring specialist tracking active calls\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -108,11 +101,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Terminate the call on channel 'SIP/1001-00000001'. This demonstrates administrative call control and emergency call termination capabilities.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call control specialist managing call termination\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Terminate the call on channel 'SIP/1001-00000001'. This demonstrates administrative call control and emergency call termination capabilities.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call control specialist managing call termination\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Terminate the call on channel 'SIP/1001-00000001'. This demonstrates administrative call control and emergency call termination capabilities.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call control specialist managing call termination\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -133,11 +123,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Retrieve the last 5 call detail records (CDR) from the Asterisk system. Show call dates, source and destination numbers, call durations, and call dispositions for analysis.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call analytics specialist reviewing call history data\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Retrieve the last 5 call detail records (CDR) from the Asterisk system. Show call dates, source and destination numbers, call durations, and call dispositions for analysis.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call analytics specialist reviewing call history data\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Retrieve the last 5 call detail records (CDR) from the Asterisk system. Show call dates, source and destination numbers, call durations, and call dispositions for analysis.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk call analytics specialist reviewing call history data\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -163,11 +150,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Display all configured SIP extensions in the Asterisk system. Show extension numbers, user names, registration status, IP addresses, and user agents for each extension.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension management specialist listing all SIP extensions\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Display all configured SIP extensions in the Asterisk system. Show extension numbers, user names, registration status, IP addresses, and user agents for each extension.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension management specialist listing all SIP extensions\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Display all configured SIP extensions in the Asterisk system. Show extension numbers, user names, registration status, IP addresses, and user agents for each extension.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension management specialist listing all SIP extensions\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -188,11 +172,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Get detailed status information for extension {{test_extension_1}}. Show availability status, registration details, call statistics, voicemail count, and current state.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension monitoring specialist checking extension status\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Get detailed status information for extension {{test_extension_1}}. Show availability status, registration details, call statistics, voicemail count, and current state.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension monitoring specialist checking extension status\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Get detailed status information for extension {{test_extension_1}}. Show availability status, registration details, call statistics, voicemail count, and current state.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension monitoring specialist checking extension status\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -213,11 +194,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a new SIP extension with number '1004', name 'David Wilson', password 'secure123', and place it in the 'internal' context. Provide the complete SIP configuration details.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension provisioning specialist creating new SIP extensions\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a new SIP extension with number '1004', name 'David Wilson', password 'secure123', and place it in the 'internal' context. Provide the complete SIP configuration details.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension provisioning specialist creating new SIP extensions\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a new SIP extension with number '1004', name 'David Wilson', password 'secure123', and place it in the 'internal' context. Provide the complete SIP configuration details.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk extension provisioning specialist creating new SIP extensions\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -243,11 +221,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Check the voicemail inbox for extension {{test_extension_1}}. Show all voicemail messages including sender information, timestamps, durations, and read status.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk voicemail management specialist retrieving voicemail messages\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Check the voicemail inbox for extension {{test_extension_1}}. Show all voicemail messages including sender information, timestamps, durations, and read status.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk voicemail management specialist retrieving voicemail messages\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Check the voicemail inbox for extension {{test_extension_1}}. Show all voicemail messages including sender information, timestamps, durations, and read status.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk voicemail management specialist retrieving voicemail messages\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -268,11 +243,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Play the audio file '/var/lib/asterisk/sounds/hello-world' to extension {{test_extension_1}}. This demonstrates audio playback capabilities for announcements and notifications.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk audio playback specialist managing sound file playback\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Play the audio file '/var/lib/asterisk/sounds/hello-world' to extension {{test_extension_1}}. This demonstrates audio playback capabilities for announcements and notifications.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk audio playback specialist managing sound file playback\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Play the audio file '/var/lib/asterisk/sounds/hello-world' to extension {{test_extension_1}}. This demonstrates audio playback capabilities for announcements and notifications.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk audio playback specialist managing sound file playback\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -293,11 +265,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Provide a comprehensive status report of the Asterisk system. Include system health, uptime, version information, call statistics, extension summary, resource usage, and network interface status.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk system administrator generating comprehensive system status reports\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Provide a comprehensive status report of the Asterisk system. Include system health, uptime, version information, call statistics, extension summary, resource usage, and network interface status.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk system administrator generating comprehensive system status reports\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Provide a comprehensive status report of the Asterisk system. Include system health, uptime, version information, call statistics, extension summary, resource usage, and network interface status.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk system administrator generating comprehensive system status reports\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -323,11 +292,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Execute a complete telephony workflow: 1) Check status of all extensions, 2) Make a call from {{test_extension_1}} to {{test_extension_2}}, 3) Monitor active calls, 4) Check voicemails for {{test_extension_1}}, 5) Generate a system status report. Provide detailed results for each step.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk workflow orchestrator managing comprehensive telephony operations\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Execute a complete telephony workflow: 1) Check status of all extensions, 2) Make a call from {{test_extension_1}} to {{test_extension_2}}, 3) Monitor active calls, 4) Check voicemails for {{test_extension_1}}, 5) Generate a system status report. Provide detailed results for each step.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk workflow orchestrator managing comprehensive telephony operations\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Execute a complete telephony workflow: 1) Check status of all extensions, 2) Make a call from {{test_extension_1}} to {{test_extension_2}}, 3) Monitor active calls, 4) Check voicemails for {{test_extension_1}}, 5) Generate a system status report. Provide detailed results for each step.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk workflow orchestrator managing comprehensive telephony operations\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -348,58 +314,8 @@
             "header": [],
             "body": {
               "mode": "raw",
-<<<<<<< HEAD
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Simulate call center operations: 1) List all available extensions and their status, 2) Analyze recent call history to identify patterns, 3) Check system resources and performance, 4) Create a new agent extension (1005) named 'Agent Smith', 5) Demonstrate audio announcement capabilities. Provide operational insights and recommendations.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a call center operations manager using Asterisk MCP for comprehensive telephony management\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-              "host": ["{{dev-python-host}}"],
-              "path": ["api", "v1", "mcp", "process_message"]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "5. Emergency & Administrative",
-      "item": [
-        {
-          "name": "5.1 Emergency Call Termination",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Emergency scenario: Immediately check all active calls and terminate any calls that have been running for more than 5 minutes. First get the active calls, then demonstrate hangup capability on any long-running channels.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk emergency response specialist handling urgent call termination scenarios\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
-              "host": ["{{dev-python-host}}"],
-              "path": ["api", "v1", "mcp", "process_message"]
-            }
-          }
-        },
-        {
-          "name": "5.2 System Health Check",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Perform a comprehensive system health check: 1) Get complete Asterisk system status, 2) Verify all extensions are properly registered, 3) Check for any pending voicemails, 4) Review recent call statistics, 5) Generate a health summary with recommendations for optimization.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are an Asterisk system health specialist performing comprehensive system diagnostics\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
-=======
-              "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Simulate call center operations: 1) List all available extensions and their status, 2) Analyze recent call history to identify patterns, 3) Check system resources and performance, 4) Create a new agent extension (1005) named 'Agent Smith', 5) Demonstrate audio announcement capabilities. Provide operational insights and recommendations.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a call center operations manager using Asterisk MCP for comprehensive telephony management\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
->>>>>>> main
+"raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"{{asterisk_ami_host}}\",\n            \"ami_port\": \"{{asterisk_ami_port}}\",\n            \"ami_username\": \"{{asterisk_ami_username}}\",\n            \"ami_secret\": \"{{asterisk_ami_secret}}\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"{{gemini_api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 30000,\n        \"input\": \"Simulate call center operations: 1) List all available extensions and their status, 2) Analyze recent call history to identify patterns, 3) Check system resources and performance, 4) Create a new agent extension (1005) named 'Agent Smith', 5) Demonstrate audio announcement capabilities. Provide operational insights and recommendations.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a call center operations manager using Asterisk MCP for comprehensive telephony management\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+
               "options": {
                 "raw": {
                   "language": "json"
@@ -417,3 +333,4 @@
     }
   ]
 }
+
