@@ -35,5 +35,12 @@ ServersConfig = [
         "args": [
             "mcp_servers/python/servers/LINE_MCP/line_mcp.py"
         ]
+    },
+    {
+        "server_name": "ASTERISK_MCP",
+        "command": "python",
+        "args": [
+            "mcp_servers/python/servers/ASTERISK_MCP/mcp_asterisk.py"
+        ]
     }
 ]
