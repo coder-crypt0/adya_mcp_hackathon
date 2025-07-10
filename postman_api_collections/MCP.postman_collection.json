@@ -214,20 +214,15 @@
                 }
               },
               "response": []
-            }
-          ]
-        },
-        {
-          "name": "Azure OpenAi",
-          "item": [
+            },
             {
-              "name": "Non-Stream Api - LINE MCP User Profile",
+              "name": "Non-Stream Api - ASTERISK MCP",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"selected_server_credentials\": {\n        \"LINE_MCP\": {\n            \"channel_access_token\": \"\",\n            \"channel_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Get the profile information for user ID U1234567890\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a LINE user management assistant that can retrieve user profiles and information\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"LINE_MCP\"\n    ]\n}",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"127.0.0.1\",\n            \"ami_port\": 5038,\n            \"ami_username\": \"admin\",\n            \"ami_password\": \"password\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Check the current active SIP channels and summarize.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"You are an assistant for querying an Asterisk server via AMI\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -255,13 +250,42 @@
           "name": "Azure OpenAi",
           "item": [
             {
-              "name": "Non-Stream Api - LINE MCP Flex Message",
+              "name": "Non-Stream Api",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"selected_server_credentials\": {\n        \"LINE_MCP\": {\n            \"channel_access_token\": \"\",\n            \"channel_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Send a flex message to user U1234567890 with a simple card containing title 'Welcome to MCP!' and description 'Explore our powerful LINE integration features.'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a LINE flex message specialist that creates beautiful custom layouts\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"LINE_MCP\"\n    ]\n}",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"create a category 'Grocery'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api -python",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"get the recent once email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"MCP-GSUITE\"\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -284,13 +308,71 @@
               "response": []
             },
             {
-              "name": "Non-Stream Api - LINE MCP Broadcast",
+              "name": "Stream API",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"selected_server_credentials\": {\n        \"LINE_MCP\": {\n            \"channel_access_token\": \"\",\n            \"channel_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Broadcast a welcome message saying 'Welcome to our LINE MCP Integration! We can help you with mathematical calculations, email management, and rich messaging features.'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a LINE broadcast messaging assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"LINE_MCP\"\n    ]\n}",
+                  "raw": "{\n    \"selected_server_credentials\": {\n\n         \"G_DRIVE\": {\n            \"web\": {\n                \"client_id\":\"\",\n                \"client_secret\":\"\",\n                \"refresh_token\": \"\",\n                \"access_token\": \"\"\n            }\n        }\n    },\n     \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"get the recent once email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message_stream"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - NumPy MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NUMPY_MCP\": {}\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Solve the linear system: 2x + 3y = 7, x + 4y = 6. Also calculate the SVD decomposition of the coefficient matrix.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a mathematical computation assistant using NumPy for linear algebra\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"NUMPY_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - Neo4j MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Build a knowledge graph about companies and their employees. Create Company nodes for Google and Microsoft, Person nodes for employees, and WORKS_FOR relationships. Then find all neighbors of Google to see its connections.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a knowledge graph specialist using Neo4j for enterprise data modeling\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -319,7 +401,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a social network graph. First create nodes for Alice (age: 30), Bob (age: 25), and Charlie (age: 35) with Person labels. Then create friendship relationships between Alice-Bob and Bob-Charlie. Finally, find the shortest path between Alice and Charlie.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a graph database expert using Neo4j for social network analysis\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"LINE_MCP\": {\n            \"channel_access_token\": \"\",\n            \"channel_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Send a text message 'Hello from LINE MCP Server!' to user ID U1234567890\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a LINE messaging assistant that can send messages and rich content\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"LINE_MCP\"\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -342,13 +424,42 @@
               "response": []
             },
             {
-              "name": "Non-Stream Api - MCP-GSUITE",
+              "name": "Non-Stream Api - DAVINCI MCP",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"selected_server_credentials\": {\n        \"MCP-GSUITE\": {\n            \"token\": \"\",\n            \"refresh_token\": \"\",\n            \"client_id\": \"\",\n            \"client_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"get the recent one email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"MCP-GSUITE\"\n    ]\n}",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"List all DaVinci Resolve projects\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - ASTERISK MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"127.0.0.1\",\n            \"ami_port\": 5038,\n            \"ami_username\": \"admin\",\n            \"ami_password\": \"password\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Check the current active SIP channels and summarize.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"You are an assistant for querying an Asterisk server via AMI\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -376,13 +487,42 @@
           "name": "Openai",
           "item": [
             {
-              "name": "Non-Stream Api - LINE MCP Azure",
+              "name": "Non-Stream Api",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"selected_server_credentials\": {\n        \"LINE_MCP\": {\n            \"channel_access_token\": \"\",\n            \"channel_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"endpoint\": \"\",\n        \"deployment_id\": \"gpt-4o\",\n        \"api_version\": \"\",\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Send a carousel message to user U1234567890 with three cards: Card 1 - 'Math Helper' with description 'Get mathematical calculations' and a button to 'Calculate Matrix', Card 2 - 'Email Assistant' with description 'Manage your emails' and a button to 'Check Emails', Card 3 - 'General Help' with description 'Get general assistance' and a button to 'Get Help'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a comprehensive assistant that can send rich LINE messages, perform mathematical calculations, and manage emails\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_AZURE_AI\",\n    \"selected_servers\": [\n        \"LINE_MCP\"\n    ]\n}",
+                  "raw": "{\n    \"selected_server_credentials\": {\n\n         \"G_DRIVE\": {\n            \"web\": {\n                \"client_id\":\"\",\n                \"client_secret\":\"\",\n                \"refresh_token\": \"\",\n                \"access_token\": \"\"\n            }\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Hii\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api -python",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"MCP-GSUITE\": {\n            \"token\": \"\",\n            \"refresh_token\": \"\",\n            \"client_id\": \"\",\n            \"client_secret\": \"\"\n        }\n        // \"WORDPRESS\": {\n        //     \"siteUrl\": \"\",\n        //     \"username\": \"\",\n        //     \"password\": \"\"\n        // }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\":{\n        \"api_key\": \"XkSQ0wdBTaZkxlvEEbQBxOAlPK1LhNL_XrcVtgA\",\n        \"temperature\": 0.1,\n        \"input\": \"get the recent email\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"MCP-GSUITE\"\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -403,20 +543,189 @@
                 }
               },
               "response": []
-            }
-          ]
-        },
-        {
-          "name": "OpenAI",
-          "item": [
+            },
             {
-              "name": "Non-Stream Api - LINE MCP OpenAI",
+              "name": "Stream API",
               "request": {
                 "method": "POST",
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"selected_server_credentials\": {\n        \"LINE_MCP\": {\n            \"channel_access_token\": \"\",\n            \"channel_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Send an image message to user U1234567890 with image URL 'https://example.com/sample-image.jpg'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a LINE image messaging assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"LINE_MCP\"\n    ]\n}",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"WORDPRESS\": {\n            \"siteUrl\": \"\",\n            \"username\": \"\",\n            \"password\": \"\"\n        }\n        //  \"G_DRIVE\": {\n        //     \"web\": {\n        //         \"client_id\":\"\",\n        //         \"client_secret\":\"\",\n        //         \"refresh_token\": \"\",\n        //         \"access_token\": \"\"\n        //     }\n        // }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Hii\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a helpful assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"Hii\"\n            }\n        ]\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"WORDPRESS\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-js-host}}/api/v1/mcp/process_message_stream",
+                  "host": [
+                    "{{dev-js-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message_stream"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - NumPy MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NUMPY_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"I need to analyze this matrix: [[1,2,3],[4,5,6],[7,8,9]]. Calculate its eigenvalues, determinant, transpose, and statistical measures like mean and standard deviation. Also perform SVD decomposition.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a comprehensive mathematical analysis expert using NumPy for all calculations\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"NUMPY_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - Neo4j MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"NEO4J_MCP\": {\n            \"uri\": \"bolt://localhost:7687\",\n            \"username\": \"neo4j\",\n            \"password\": \"your-password\",\n            \"database\": \"neo4j\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Execute a custom Cypher query to find all nodes with more than 2 relationships, explain the query performance, and then profile it for optimization insights.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a Neo4j performance analyst using Cypher for complex graph queries\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"NEO4J_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - LINE MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"LINE_MCP\": {\n            \"channel_access_token\": \"\",\n            \"channel_secret\": \"\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"Send a text message 'Hello from LINE MCP Server!' to user ID U1234567890\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a LINE messaging assistant that can send messages and rich content\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"LINE_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - DAVINCI MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"input\": \"List all DaVinci Resolve projects\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - ASTERISK MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"127.0.0.1\",\n            \"ami_port\": 5038,\n            \"ami_username\": \"admin\",\n            \"ami_password\": \"password\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Check the current active SIP channels and summarize.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"You are an assistant for querying an Asterisk server via AMI\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+                  "host": [
+                    "{{dev-python-host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "mcp",
+                    "process_message"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Non-Stream Api - ASTERISK MCP",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"selected_server_credentials\": {\n        \"ASTERISK_MCP\": {\n            \"ami_host\": \"127.0.0.1\",\n            \"ami_port\": 5038,\n            \"ami_username\": \"admin\",\n            \"ami_password\": \"password\"\n        }\n    },\n    \"client_details\": {\n        \"api_key\": \"\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Check the current active SIP channels and summarize.\",\n        \"input_type\": \"text\",\n        \"prompt\": \"You are an assistant for querying an Asterisk server via AMI\",\n        \"chat_model\": \"gpt-4o\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_OPENAI\",\n    \"selected_servers\": [\n        \"ASTERISK_MCP\"\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
