@@ -1,0 +1,518 @@
+{
+  "info": {
+    "_postman_id": "davinci-mcp-collection",
+    "name": "DaVinci MCP Examples",
+    "description": "Complete DaVinci MCP Server testing with 20+ tools for project, timeline, media, render, color, fusion, and automation workflows.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "dev-python-host",
+      "value": "http://localhost:5001",
+      "description": "DaVinci MCP Server host"
+    },
+    {
+      "key": "api_key",
+      "value": "",
+      "description": "Your LLM API key"
+    },
+    {
+      "key": "davinci_project_name",
+      "value": "DemoProject",
+      "description": "Sample DaVinci Resolve project name"
+    },
+    {
+      "key": "timeline_name",
+      "value": "MainTimeline",
+      "description": "Sample timeline name"
+    },
+    {
+      "key": "media_file_path_1",
+      "value": "C:/Videos/clip1.mp4",
+      "description": "Sample media file path"
+    },
+    {
+      "key": "media_file_path_2",
+      "value": "C:/Videos/clip2.mov",
+      "description": "Sample media file path"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Project Management",
+      "item": [
+        {
+          "name": "1.1 Get Project List",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"List all DaVinci Resolve projects\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "1.2 Open Project",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Open project named '{{davinci_project_name}}'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "1.3 Create Project",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a new project called 'NewProject'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "1.4 Delete Project",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Delete project named 'OldProject'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "1.5 Get Current Project",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Get the name of the current project\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Timeline Management",
+      "item": [
+        {
+          "name": "2.1 List Timelines",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"List all timelines in the current project\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "2.2 Create Timeline",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Create a timeline called '{{timeline_name}}'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "2.3 Delete Timeline",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Delete timeline named 'OldTimeline'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Media Pool",
+      "item": [
+        {
+          "name": "3.1 Import Media",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Import media files ['{{media_file_path_1}}', '{{media_file_path_2}}']\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "3.2 List Media Pool Items",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"List all media pool items\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "3.3 Delete Media Pool Item",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Delete media pool item named 'clip1.mp4'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Timeline Markers",
+      "item": [
+        {
+          "name": "4.1 Add Timeline Marker",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Add a red marker at frame 100 with name 'Intro' and note 'Start of intro'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "4.2 List Timeline Markers",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"List all markers in the current timeline\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "4.3 Delete Timeline Marker",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Delete marker at frame 100\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Render & Export",
+      "item": [
+        {
+          "name": "5.1 Start Render Job",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Start a render job with preset 'mp4'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "5.2 List Render Jobs",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"List all render jobs\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "5.3 Stop Rendering",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Stop the current rendering process\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "5.4 Export Timeline",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Export the current timeline to 'C:/Exports/timeline1.xml'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Color & Fusion",
+      "item": [
+        {
+          "name": "6.1 Apply LUT",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Apply LUT from 'C:/LUTs/filmlook.cube' to the timeline\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        },
+        {
+          "name": "6.2 Run Fusion Script",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Run Fusion script at 'C:/Scripts/fusion_script.lua'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Automation & Batch",
+      "item": [
+        {
+          "name": "7.1 Batch Project Export",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"selected_server_credentials\": {\n        \"DAVINCI_MCP\": {}\n    },\n    \"client_details\": {\n        \"api_key\": \"{{api_key}}\",\n        \"temperature\": 0.1,\n        \"max_token\": 20000,\n        \"input\": \"Export all projects to folder 'C:/Exports/AllProjects'\",\n        \"input_type\": \"text\",\n        \"prompt\": \"you are a DaVinci Resolve automation assistant\",\n        \"chat_model\": \"gemini-2.0-flash\",\n        \"chat_history\": []\n    },\n    \"selected_client\": \"MCP_CLIENT_GEMINI\",\n    \"selected_servers\": [\n        \"DAVINCI_MCP\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev-python-host}}/api/v1/mcp/process_message",
+              "host": ["{{dev-python-host}}"],
+              "path": ["api", "v1", "mcp", "process_message"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

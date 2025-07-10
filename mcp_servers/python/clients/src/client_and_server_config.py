@@ -42,5 +42,12 @@ ServersConfig = [
         "args": [
             "mcp_servers/python/servers/ASTERISK_MCP/mcp_asterisk.py"
         ]
+    },
+    {
+        "server_name": "DAVINCI_MCP",
+        "command": "python",
+        "args": [
+            "mcp_servers/python/servers/DAVINCI_MCP/davinci_mcp.py"
+        ]
     }
 ]

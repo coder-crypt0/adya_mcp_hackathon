@@ -1,0 +1,3 @@
+mcp>=1.1.0
+# DaVinciResolveScript is provided by DaVinci Resolve installation (not pip-installable)
+pydantic>=2.5.0
