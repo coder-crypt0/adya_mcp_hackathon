@@ -86,7 +86,9 @@ class MatrixAddToolHandler(NumPyToolHandler):
             matrix_a = safe_numpy_array(args["matrix_a"])
             matrix_b = safe_numpy_array(args["matrix_b"])
             result = np.add(matrix_a, matrix_b)
-            return [TextContent(type="text", text=f"Matrix Addition Result:\n{result.tolist()}")]
+            print("Matrix Addition Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Matrix Addition Result:\n{result.tolist()}", meta={"matrix": result.tolist()})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in matrix addition: {str(e)}")]
 
@@ -127,7 +129,9 @@ class MatrixMultiplyToolHandler(NumPyToolHandler):
             matrix_a = safe_numpy_array(args["matrix_a"])
             matrix_b = safe_numpy_array(args["matrix_b"])
             result = np.matmul(matrix_a, matrix_b)
-            return [TextContent(type="text", text=f"Matrix Multiplication Result:\n{result.tolist()}")]
+            print("Matrix Multiplication Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Matrix Multiplication Result:\n{result.tolist()}", meta={"matrix": result.tolist()})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in matrix multiplication: {str(e)}")]
 
@@ -168,7 +172,9 @@ class MatrixSubtractToolHandler(NumPyToolHandler):
             matrix_a = safe_numpy_array(args["matrix_a"])
             matrix_b = safe_numpy_array(args["matrix_b"])
             result = np.subtract(matrix_a, matrix_b)
-            return [TextContent(type="text", text=f"Matrix Subtraction Result:\n{result.tolist()}")]
+            print("Matrix Subtraction Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Matrix Subtraction Result:\n{result.tolist()}", meta={"matrix": result.tolist()})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in matrix subtraction: {str(e)}")]
 
@@ -209,7 +215,9 @@ class ElementWiseMultiplyToolHandler(NumPyToolHandler):
             matrix_a = safe_numpy_array(args["matrix_a"])
             matrix_b = safe_numpy_array(args["matrix_b"])
             result = np.multiply(matrix_a, matrix_b)
-            return [TextContent(type="text", text=f"Element-wise Multiplication Result:\n{result.tolist()}")]
+            print("Element-wise Multiplication Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Element-wise Multiplication Result:\n{result.tolist()}", meta={"matrix": result.tolist()})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in element-wise multiplication: {str(e)}")]
 
@@ -250,7 +258,9 @@ class DotProductToolHandler(NumPyToolHandler):
             matrix_a = safe_numpy_array(args["matrix_a"])
             matrix_b = safe_numpy_array(args["matrix_b"])
             result = np.dot(matrix_a, matrix_b)
-            return [TextContent(type="text", text=f"Dot Product Result:\n{result.tolist() if hasattr(result, 'tolist') else result}")]
+            print("Dot Product Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Dot Product Result:\n{result.tolist() if hasattr(result, 'tolist') else result}", meta={"result": result.tolist() if hasattr(result, 'tolist') else result})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in dot product: {str(e)}")]
 
@@ -282,7 +292,9 @@ class MatrixTransposeToolHandler(NumPyToolHandler):
         try:
             matrix = safe_numpy_array(args["matrix"])
             result = np.transpose(matrix)
-            return [TextContent(type="text", text=f"Matrix Transpose Result:\n{result.tolist()}")]
+            print("Matrix Transpose Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Matrix Transpose Result:\n{result.tolist()}", meta={"matrix": result.tolist()})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in matrix transpose: {str(e)}")]
 
@@ -316,7 +328,9 @@ class MatrixInverseToolHandler(NumPyToolHandler):
             if matrix.shape[0] != matrix.shape[1]:
                 raise ValueError("Matrix must be square for inverse")
             result = np.linalg.inv(matrix)
-            return [TextContent(type="text", text=f"Matrix Inverse Result:\n{result.tolist()}")]
+            print("Matrix Inverse Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Matrix Inverse Result:\n{result.tolist()}", meta={"matrix": result.tolist()})]
         except np.linalg.LinAlgError:
             return [TextContent(type="text", text="Error: Matrix is singular and cannot be inverted")]
         except Exception as e:
@@ -352,7 +366,9 @@ class MatrixDeterminantToolHandler(NumPyToolHandler):
             if matrix.shape[0] != matrix.shape[1]:
                 raise ValueError("Matrix must be square for determinant")
             result = np.linalg.det(matrix)
-            return [TextContent(type="text", text=f"Matrix Determinant: {float(result)}")]
+            print("Matrix Determinant:")
+            print(result)
+            return [TextContent(type="text", text=f"Matrix Determinant: {float(result)}", meta={"determinant": float(result)})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in determinant calculation: {str(e)}")]
 
@@ -390,7 +406,9 @@ class SolveLinearSystemToolHandler(NumPyToolHandler):
             matrix_a = safe_numpy_array(args["matrix_a"])
             vector_b = safe_numpy_array(args["vector_b"])
             result = np.linalg.solve(matrix_a, vector_b)
-            return [TextContent(type="text", text=f"Linear System Solution:\nx = {result.tolist()}")]
+            print("Linear System Solution:")
+            print(result)
+            return [TextContent(type="text", text=f"Linear System Solution:\nx = {result.tolist()}", meta={"solution": result.tolist()})]
         except np.linalg.LinAlgError:
             return [TextContent(type="text", text="Error: Linear system has no unique solution")]
         except Exception as e:
@@ -426,9 +444,14 @@ class EigenDecompositionToolHandler(NumPyToolHandler):
             if matrix.shape[0] != matrix.shape[1]:
                 raise ValueError("Matrix must be square for eigenvalue decomposition")
             eigenvalues, eigenvectors = np.linalg.eig(matrix)
+            print("Eigenvalues:")
+            print(eigenvalues)
+            print("Eigenvectors:")
+            print(eigenvectors)
             return [TextContent(
                 type="text",
-                text=f"Eigenvalues: {format_complex_result(eigenvalues)}\nEigenvectors:\n{format_complex_result(eigenvectors)}"
+                text=f"Eigenvalues: {format_complex_result(eigenvalues)}\nEigenvectors:\n{format_complex_result(eigenvectors)}",
+                meta={"eigenvalues": format_complex_result(eigenvalues), "eigenvectors": format_complex_result(eigenvectors)}
             )]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in eigenvalue decomposition: {str(e)}")]
@@ -461,9 +484,17 @@ class SVDToolHandler(NumPyToolHandler):
         try:
             matrix = safe_numpy_array(args["matrix"])
             U, s, Vt = np.linalg.svd(matrix)
+            print("SVD Decomposition:")
+            print("U matrix:")
+            print(U)
+            print("Singular values:")
+            print(s)
+            print("Vt matrix:")
+            print(Vt)
             return [TextContent(
                 type="text",
-                text=f"SVD Decomposition:\nU matrix:\n{U.tolist()}\nSingular values: {s.tolist()}\nVt matrix:\n{Vt.tolist()}"
+                text=f"SVD Decomposition:\nU matrix:\n{U.tolist()}\nSingular values: {s.tolist()}\nVt matrix:\n{Vt.tolist()}",
+                meta={"U": U.tolist(), "singular_values": s.tolist(), "Vt": Vt.tolist()}
             )]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in SVD: {str(e)}")]
@@ -496,9 +527,15 @@ class QRDecompositionToolHandler(NumPyToolHandler):
         try:
             matrix = safe_numpy_array(args["matrix"])
             Q, R = np.linalg.qr(matrix)
+            print("QR Decomposition:")
+            print("Q matrix:")
+            print(Q)
+            print("R matrix:")
+            print(R)
             return [TextContent(
                 type="text",
-                text=f"QR Decomposition:\nQ matrix:\n{Q.tolist()}\nR matrix:\n{R.tolist()}"
+                text=f"QR Decomposition:\nQ matrix:\n{Q.tolist()}\nR matrix:\n{R.tolist()}",
+                meta={"Q": Q.tolist(), "R": R.tolist()}
             )]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in QR decomposition: {str(e)}")]
@@ -538,7 +575,9 @@ class MatrixPowerToolHandler(NumPyToolHandler):
             if matrix.shape[0] != matrix.shape[1]:
                 raise ValueError("Matrix must be square for matrix power")
             result = np.linalg.matrix_power(matrix, power)
-            return [TextContent(type="text", text=f"Matrix Power {power} Result:\n{result.tolist()}")]
+            print(f"Matrix Power {power} Result:")
+            print(result)
+            return [TextContent(type="text", text=f"Matrix Power {power} Result:\n{result.tolist()}", meta={"matrix": result.tolist(), "power": power})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in matrix power: {str(e)}")]
 
@@ -553,22 +592,24 @@ class FFTToolHandler(NumPyToolHandler):
             inputSchema={
                 "type": "object",
                 "properties": {
-                    "vector": {
+                    "signal": {
                         "type": "array",
                         "items": {"type": "number"},
-                        "description": "Input vector for FFT"
+                        "description": "Input signal for FFT"
                     }
                 },
-                "required": ["vector"]
+                "required": ["signal"]
             }
         )
 
     def run_tool(self, args: dict) -> Sequence[TextContent]:
         try:
-            vector = safe_numpy_array(args["vector"])
-            result = np.fft.fft(vector)
+            signal = safe_numpy_array(args["signal"])
+            result = np.fft.fft(signal)
+            print("FFT Result:")
+            print(result)
             formatted_result = format_complex_result(result)
-            return [TextContent(type="text", text=f"FFT Result: {formatted_result}")]
+            return [TextContent(type="text", text=f"FFT Result: {formatted_result}", meta={"fft": formatted_result})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error in FFT: {str(e)}")]
 
@@ -583,182 +624,66 @@ class PolynomialRootsToolHandler(NumPyToolHandler):
             inputSchema={
                 "type": "object",
                 "properties": {
-                    "coefficients": {
+                    "polynomial_coefficients": {
                         "type": "array",
                         "items": {"type": "number"},
                         "description": "Polynomial coefficients (highest degree first)"
                     }
                 },
-                "required": ["coefficients"]
+                "required": ["polynomial_coefficients"]
             }
         )
 
     def run_tool(self, args: dict) -> Sequence[TextContent]:
         try:
-            coefficients = safe_numpy_array(args["coefficients"])
+            coefficients = safe_numpy_array(args["polynomial_coefficients"])
             roots = np.roots(coefficients)
+            print("Polynomial Roots:")
+            print(roots)
             formatted_roots = format_complex_result(roots)
-            return [TextContent(type="text", text=f"Polynomial Roots: {formatted_roots}")]
+            return [TextContent(type="text", text=f"Polynomial Roots: {formatted_roots}", meta={"roots": formatted_roots})]
         except Exception as e:
             return [TextContent(type="text", text=f"Error finding polynomial roots: {str(e)}")]
 
-class StatisticsToolHandler(NumPyToolHandler):
+class MatrixReshapeToolHandler(NumPyToolHandler):
     def __init__(self):
-        super().__init__("calculate_statistics")
+        super().__init__("matrix_reshape")
 
     def get_tool_description(self) -> Tool:
         return Tool(
             name=self.name,
-            description="Calculate statistical measures (mean, std, variance, min, max, median)",
+            description="Reshape a matrix to new dimensions",
             inputSchema={
                 "type": "object",
                 "properties": {
-                    "data": {
+                    "matrix": {
                         "type": "array",
                         "items": {
                             "type": "array",
                             "items": {"type": "number"}
                         },
-                        "description": "Data matrix or vector"
+                        "description": "Matrix to reshape"
                     },
-                    "operations": {
+                    "new_dimensions": {
                         "type": "array",
-                        "items": {"type": "string"},
-                        "description": "List of operations: mean, std, var, min, max, median",
-                        "default": ["mean", "std"]
+                        "items": {"type": "integer"},
+                        "description": "New shape as [rows, cols]"
                     }
                 },
-                "required": ["data"]
+                "required": ["matrix", "new_dimensions"]
             }
         )
 
     def run_tool(self, args: dict) -> Sequence[TextContent]:
         try:
-            data = safe_numpy_array(args["data"])
-            operations = args.get("operations", ["mean", "std"])
-            
-            results = []
-            for op in operations:
-                if op == "mean":
-                    results.append(f"Mean: {float(np.mean(data))}")
-                elif op == "std":
-                    results.append(f"Standard Deviation: {float(np.std(data))}")
-                elif op == "var":
-                    results.append(f"Variance: {float(np.var(data))}")
-                elif op == "min":
-                    results.append(f"Minimum: {float(np.min(data))}")
-                elif op == "max":
-                    results.append(f"Maximum: {float(np.max(data))}")
-                elif op == "median":
-                    results.append(f"Median: {float(np.median(data))}")
-            
-            return [TextContent(type="text", text=f"Statistical Results:\n" + "\n".join(results))]
+            matrix = safe_numpy_array(args["matrix"])
+            new_shape = tuple(args["new_dimensions"])
+            result = np.reshape(matrix, new_shape)
+            print("Reshaped Matrix:")
+            print(result)
+            return [TextContent(type="text", text=f"Reshaped Matrix:\n{result.tolist()}", meta={"matrix": result.tolist()})]
         except Exception as e:
-            return [TextContent(type="text", text=f"Error in statistics calculation: {str(e)}")]
-
-class NumericalDerivativeToolHandler(NumPyToolHandler):
-    def __init__(self):
-        super().__init__("numerical_derivative")
-
-    def get_tool_description(self) -> Tool:
-        return Tool(
-            name=self.name,
-            description="Calculate numerical derivative using numpy gradient",
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "vector": {
-                        "type": "array",
-                        "items": {"type": "number"},
-                        "description": "Input vector for derivative"
-                    }
-                },
-                "required": ["vector"]
-            }
-        )
-
-    def run_tool(self, args: dict) -> Sequence[TextContent]:
-        try:
-            vector = safe_numpy_array(args["vector"])
-            result = np.gradient(vector)
-            return [TextContent(type="text", text=f"Numerical Derivative:\n{result.tolist()}")]
-        except Exception as e:
-            return [TextContent(type="text", text=f"Error in numerical derivative: {str(e)}")]
-
-class ConvolutionToolHandler(NumPyToolHandler):
-    def __init__(self):
-        super().__init__("convolution")
-
-    def get_tool_description(self) -> Tool:
-        return Tool(
-            name=self.name,
-            description="Convolution of two signals",
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "signal1": {
-                        "type": "array",
-                        "items": {"type": "number"},
-                        "description": "First signal"
-                    },
-                    "signal2": {
-                        "type": "array",
-                        "items": {"type": "number"},
-                        "description": "Second signal"
-                    }
-                },
-                "required": ["signal1", "signal2"]
-            }
-        )
-
-    def run_tool(self, args: dict) -> Sequence[TextContent]:
-        try:
-            signal1 = safe_numpy_array(args["signal1"])
-            signal2 = safe_numpy_array(args["signal2"])
-            result = np.convolve(signal1, signal2, mode='full')
-            return [TextContent(type="text", text=f"Convolution Result:\n{result.tolist()}")]
-        except Exception as e:
-            return [TextContent(type="text", text=f"Error in convolution: {str(e)}")]
-
-class RandomGeneratorToolHandler(NumPyToolHandler):
-    def __init__(self):
-        super().__init__("generate_random_normal")
-
-    def get_tool_description(self) -> Tool:
-        return Tool(
-            name=self.name,
-            description="Generate random numbers from normal distribution",
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "mean": {
-                        "type": "number",
-                        "description": "Mean of distribution",
-                        "default": 0.0
-                    },
-                    "std": {
-                        "type": "number",
-                        "description": "Standard deviation",
-                        "default": 1.0
-                    },
-                    "size": {
-                        "type": "integer",
-                        "description": "Number of samples",
-                        "default": 10
-                    }
-                }
-            }
-        )
-
-    def run_tool(self, args: dict) -> Sequence[TextContent]:
-        try:
-            mean = args.get("mean", 0.0)
-            std = args.get("std", 1.0)
-            size = args.get("size", 10)
-            result = np.random.normal(mean, std, size)
-            return [TextContent(type="text", text=f"Random Normal Distribution (mean={mean}, std={std}):\n{result.tolist()}")]
-        except Exception as e:
-            return [TextContent(type="text", text=f"Error generating random numbers: {str(e)}")]
+            return [TextContent(type="text", text=f"Error in matrix reshape: {str(e)}")]
 
 # Tool registry
 tool_handlers: Dict[str, NumPyToolHandler] = {}
@@ -788,10 +713,7 @@ add_tool_handler(QRDecompositionToolHandler())
 add_tool_handler(MatrixPowerToolHandler())
 add_tool_handler(FFTToolHandler())
 add_tool_handler(PolynomialRootsToolHandler())
-add_tool_handler(StatisticsToolHandler())
-add_tool_handler(NumericalDerivativeToolHandler())
-add_tool_handler(ConvolutionToolHandler())
-add_tool_handler(RandomGeneratorToolHandler())
+add_tool_handler(MatrixReshapeToolHandler())
 
 @app.list_tools()
 async def handle_list_tools() -> List[Tool]:
